@@ -1,0 +1,1206 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bùi Việt Quốc - Job_Finder_Project_Detail</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom Xerox Filter */
+      .xerox-filter {
+        filter: grayscale(1) contrast(3) brightness(0.8);
+        transition: all 0.3s ease;
+      }
+      .xerox-filter:hover {
+        filter: grayscale(0) contrast(1) brightness(1);
+        transform: rotate(-1deg) scale(1.02);
+      }
+
+      /* Brutalist Shadow */
+      .brutalist-shadow {
+        box-shadow: 6px 6px 0px 0px #131313;
+      }
+
+      .brutalist-shadow-yellow {
+        box-shadow: 6px 6px 0px 0px #d8c860;
+      }
+
+      /* Typewriter Ribbon Effect for inputs/focus */
+      .focus-invert:focus {
+        background-color: #e9e1d4 !important;
+        color: #131313 !important;
+        outline: none;
+      }
+
+      body {
+        background-color: #2e2e2e;
+        color: #e4e2e1;
+        overflow-x: hidden;
+        font-family: "Courier Prime", "Courier New", monospace;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #2e2e2e;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #7a7a7a;
+        border: 2px solid #2e2e2e;
+      }
+
+      .glitch-text {
+        position: relative;
+      }
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        text-shadow: -1px 0 #ffb3ae;
+        top: 0;
+        overflow: hidden;
+        clip: rect(0, 900px, 0, 0);
+        animation: noise-anim 2s infinite linear alternate-reverse;
+      }
+
+      @keyframes noise-anim {
+        0% {
+          clip: rect(10px, 9999px, 20px, 0);
+        }
+        20% {
+          clip: rect(45px, 9999px, 50px, 0);
+        }
+        40% {
+          clip: rect(12px, 9999px, 90px, 0);
+        }
+        60% {
+          clip: rect(70px, 9999px, 80px, 0);
+        }
+        80% {
+          clip: rect(30px, 9999px, 40px, 0);
+        }
+        100% {
+          clip: rect(95px, 9999px, 100px, 0);
+        }
+      }
+
+      .email-action {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+      }
+      .email-reveal {
+        position: absolute;
+        top: calc(100% + 0.35rem);
+        left: 0;
+        z-index: 20;
+        display: none;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid rgba(233, 225, 212, 0.25);
+        background: rgba(46, 46, 46, 0.96);
+        color: #d8c860;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        box-shadow: 4px 4px 0 rgba(181, 166, 66, 0.2);
+        white-space: nowrap;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      section[id] {
+        scroll-margin-top: 100px;
+      }
+      .top-nav-link:hover {
+        background: transparent !important;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "dirty-yellow": "#b5a642",
+              "faded-black": "#2e2e2e",
+              "on-secondary-fixed": "#410004",
+              "inverse-on-surface": "#303030",
+              "on-tertiary-fixed-variant": "#364e00",
+              "on-primary-fixed": "#201c00",
+              "surface-container-highest": "#353535",
+              "off-white": "#E9E1D4",
+              "on-tertiary": "#243600",
+              "error-container": "#93000a",
+              "on-secondary-fixed-variant": "#852223",
+              "on-primary-fixed-variant": "#504700",
+              "on-secondary-container": "#ff9e98",
+              "on-secondary": "#65080f",
+              "primary-container": "#b5a642",
+              tertiary: "#add461",
+              "on-tertiary-fixed": "#131f00",
+              "tertiary-fixed-dim": "#add461",
+              "secondary-fixed-dim": "#ffb3ae",
+              "outline-variant": "#4a4737",
+              error: "#ffb4ab",
+              "primary-fixed": "#f5e479",
+              "surface-tint": "#d8c860",
+              "inverse-primary": "#6a5f00",
+              "surface-container-low": "#1b1c1c",
+              "on-primary-container": "#433b00",
+              outline: "#96917e",
+              background: "#2e2e2e",
+              "on-tertiary-container": "#2c4100",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary": "#373100",
+              surface: "#2e2e2e",
+              "inverse-surface": "#e4e2e1",
+              "on-surface": "#e4e2e1",
+              "surface-dim": "#2e2e2e",
+              "secondary-fixed": "#ffdad7",
+              "tertiary-fixed": "#c8f17a",
+              primary: "#d8c860",
+              "primary-fixed-dim": "#d8c860",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#393939",
+              "on-error": "#690005",
+              "on-surface-variant": "#ccc6b2",
+              "concrete-grey": "#7A7A7A",
+              secondary: "#ffb3ae",
+              "tertiary-container": "#8cb143",
+              "surface-container": "#1f2020",
+              "secondary-container": "#882425",
+              "surface-variant": "#353535",
+              "surface-container-high": "#2a2a2a",
+              "on-background": "#e4e2e1",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "container-max": "1280px",
+              xs: "8px",
+              sm: "16px",
+              "section-gap": "96px",
+              unit: "8px",
+              md: "24px",
+              lg: "48px",
+            },
+            fontFamily: {
+              display: ["Courier Prime", "Courier New", "monospace"],
+              subheading: ["Courier Prime", "Courier New", "monospace"],
+              body: ["Courier Prime", "Courier New", "monospace"],
+              heading: ["Courier Prime", "Courier New", "monospace"],
+              "display-mobile": ["Courier Prime", "Courier New", "monospace"],
+              caption: ["Courier Prime", "Courier New", "monospace"],
+            },
+            fontSize: {
+              display: [
+                "64px",
+                {
+                  lineHeight: "64px",
+                  letterSpacing: "-2px",
+                  fontWeight: "700",
+                },
+              ],
+              subheading: [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  letterSpacing: "-0.5px",
+                  fontWeight: "700",
+                },
+              ],
+              body: [
+                "16px",
+                { lineHeight: "26px", letterSpacing: "0", fontWeight: "400" },
+              ],
+              heading: [
+                "36px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-1px",
+                  fontWeight: "700",
+                },
+              ],
+              "display-mobile": [
+                "40px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-1px",
+                  fontWeight: "700",
+                },
+              ],
+              caption: [
+                "14px",
+                {
+                  lineHeight: "18px",
+                  letterSpacing: "0.5px",
+                  fontWeight: "400",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="font-body text-body selection:bg-primary selection:text-background"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 flex flex-wrap justify-between items-center px-md py-xs bg-background border-b-2 border-on-background transition-colors duration-300"
+    >
+      <div
+        class="font-heading text-heading uppercase text-primary dark:text-primary tracking-tighter"
+      >
+        BÙI VIỆT QUỐC
+      </div>
+      <div class="flex items-center gap-md">
+        <div class="hidden md:flex gap-md">
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ CANDIDATE ]"
+            data-lang-vi="[ ỨNG VIÊN ]"
+            href="#candidate"
+            >[ CANDIDATE ]</a
+          >
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ EMPLOYER ]"
+            data-lang-vi="[ NHÀ TUYỂN DỤNG ]"
+            href="#employer"
+            >[ EMPLOYER ]</a
+          >
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ ADMIN ]"
+            data-lang-vi="[ QUẢN TRỊ ]"
+            href="#admin"
+            >[ ADMIN ]</a
+          >
+        </div>
+        <div class="flex items-center gap-xs ml-md">
+          <button
+            id="langToggle"
+            class="text-on-background font-bold border-2 border-on-background px-xs py-[2px] hover:bg-primary hover:text-background transition-colors"
+          >
+            [ EN / VI ]
+          </button>
+          <a
+            href="lading_page.html"
+            class="bg-primary text-background font-bold px-xs py-[2px] border-2 border-background hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+            >BACK</a
+          >
+        </div>
+      </div>
+    </nav>
+    <main class="pt-32 pb-section-gap px-md max-w-container-max mx-auto">
+      <!-- Hero Section -->
+      <header class="mb-section-gap">
+        <div
+          class="inline-block bg-primary text-background px-2 py-1 mb-xs font-bold text-caption uppercase"
+          data-lang-en="Project_Manifest.v01"
+          data-lang-vi="Bản_ghi_dự_án.v01"
+        >
+          Project_Manifest.v01
+        </div>
+        <h1
+          class="font-display text-display-mobile md:text-display uppercase mb-sm leading-none glitch-text"
+          data-text="JOB_FINDER //"
+          data-lang-en="JOB_FINDER // <br/>GRADUATION_PROJECT."
+          data-lang-vi="JOB_FINDER // <br/>ĐỒ_ÁN_TỐT_NGHIỆP."
+        >
+          JOB_FINDER //
+        </h1>
+        <div
+          class="flex flex-col md:flex-row gap-lg items-center md:items-end justify-between w-full"
+        >
+          <div class="max-w-2xl flex-1">
+            <p
+              class="text-subheading font-subheading mb-md text-off-white"
+              data-lang-en="A comprehensive job search platform with multi-role access (Candidate, Employer, Admin)."
+              data-lang-vi="Nền tảng tìm kiếm việc làm toàn diện với nhiều vai trò (Ứng viên, Nhà tuyển dụng, Quản trị viên)."
+            >
+              A comprehensive job search platform with multi-role access
+              (Candidate, Employer, Admin).
+            </p>
+            <div class="flex flex-wrap gap-sm">
+              <span
+                class="border-2 border-primary text-primary px-sm py-xs font-bold"
+                data-lang-en="[ Design FE ]"
+                data-lang-vi="[ Thiết kế FE ]"
+                >[ Design FE ]</span
+              >
+              <span
+                class="border-2 border-primary text-primary px-sm py-xs font-bold"
+                data-lang-en="[ MySQL ]"
+                data-lang-vi="[ MySQL ]"
+                >[ MySQL ]</span
+              >
+              <span
+                class="border-2 border-primary text-primary px-sm py-xs font-bold"
+                data-lang-en="[ Design Database ]"
+                data-lang-vi="[ Thiết kế CSDL ]"
+                >[ Design Database ]</span
+              >
+              <span
+                class="border-2 border-primary text-primary px-sm py-xs font-bold"
+                data-lang-en="[ Research similar websites ]"
+                data-lang-vi="[ Nghiên cứu web tương tự ]"
+                >[ Research similar websites ]</span
+              >
+            </div>
+          </div>
+          <div
+            class="w-full md:w-80 lg:w-[22rem] border-2 border-primary p-2 bg-background brutalist-shadow-yellow"
+            style="transform: rotate(-3deg)"
+          >
+            <img
+              class="w-full h-56 md:h-64 object-cover border-2 border-off-white"
+              src="assets/images/Group_project.jpg"
+              alt="Group project"
+            />
+            <div
+              class="mt-2 text-primary font-bold uppercase text-caption"
+              data-lang-en="Group members"
+              data-lang-vi="Nhóm thực hiện"
+            >
+              Group members
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Role Features Overview -->
+      <section class="mb-section-gap">
+        <div
+          class="inline-block bg-off-white text-background px-2 py-1 mb-sm font-bold text-caption uppercase"
+          data-lang-en="JOB_FINDER"
+          data-lang-vi="JOB_FINDER"
+        >
+          JOB_FINDER
+        </div>
+        <h2
+          class="font-heading text-heading mb-lg text-off-white uppercase"
+          data-lang-en="[ ROLE_BASED_FUNCTIONS ]"
+          data-lang-vi="[ CHỨC_NĂNG_THEO_VAI_TRÒ ]"
+        >
+          [ ROLE_BASED_FUNCTIONS ]
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+          <!-- Column 1: Candidate -->
+          <div class="bg-surface-container p-sm border-2 border-on-surface">
+            <div class="text-caption uppercase text-primary font-bold mb-sm border-b-2 border-primary pb-xs"
+              data-lang-en="&gt;&gt; CANDIDATE"
+              data-lang-vi="&gt;&gt; ỨNG_VIÊN"
+            >
+              &gt;&gt; CANDIDATE
+            </div>
+            <ul class="space-y-xs text-caption">
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage personal profile" data-lang-vi="Quản lý hồ sơ cá nhân">Manage personal profile</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Update education &amp; experience" data-lang-vi="Cập nhật học vấn và kinh nghiệm">Update education &amp; experience</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Create or upload CV" data-lang-vi="Tạo hoặc tải lên CV">Create or upload CV</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Search jobs" data-lang-vi="Tìm kiếm việc làm">Search jobs</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Use the Quick Job Search feature." data-lang-vi="Sử dụng chức năng Tìm việc nhanh">Use the Quick Job Search feature.</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Message the recruiter" data-lang-vi="Nhắn tin với nhà tuyển dụng">Message the recruiter</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Apply for jobs" data-lang-vi="Ứng tuyển">Apply for jobs</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Track application history" data-lang-vi="Theo dõi lịch sử ứng tuyển">Track application history</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Column 2: Employer -->
+          <div class="bg-surface-container p-sm border-2 border-on-surface">
+            <div class="text-caption uppercase text-off-white font-bold mb-sm border-b-2 border-off-white pb-xs"
+              data-lang-en="&gt;&gt; EMPLOYER"
+              data-lang-vi="&gt;&gt; NHÀ_TUYỂN_DỤNG"
+            >
+              &gt;&gt; EMPLOYER
+            </div>
+            <ul class="space-y-xs text-caption">
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage company profile" data-lang-vi="Quản lý hồ sơ doanh nghiệp">Manage company profile</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Business verification process" data-lang-vi="Quy trình xác minh doanh nghiệp">Business verification process</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Post job listings" data-lang-vi="Đăng tin tuyển dụng">Post job listings</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage posted listings" data-lang-vi="Quản lý tin đăng">Manage posted listings</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Search candidates" data-lang-vi="Tìm kiếm ứng viên">Search candidates</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="View application profiles" data-lang-vi="Xem hồ sơ ứng tuyển">View application profiles</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Update review status" data-lang-vi="Cập nhật trạng thái xét duyệt">Update review status</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Communicate with candidates" data-lang-vi="Trao đổi với ứng viên">Communicate with candidates</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Column 3: Admin -->
+          <div class="bg-surface-container p-sm border-2 border-on-surface">
+            <div class="text-caption uppercase text-primary font-bold mb-sm border-b-2 border-primary pb-xs"
+              data-lang-en="&gt;&gt; ADMIN"
+              data-lang-vi="&gt;&gt; QUẢN_TRỊ_VIÊN"
+            >
+              &gt;&gt; ADMIN
+            </div>
+            <ul class="space-y-xs text-caption">
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage user accounts" data-lang-vi="Quản lý tài khoản người dùng">Manage user accounts</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Monitor businesses" data-lang-vi="Giám sát doanh nghiệp">Monitor businesses</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Approve verification profiles" data-lang-vi="Phê duyệt hồ sơ xác minh">Approve verification profiles</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage career categories" data-lang-vi="Quản lý danh mục nghề nghiệp">Manage career categories</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Manage locations &amp; skills" data-lang-vi="Quản lý địa điểm, kỹ năng">Manage locations &amp; skills</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Handle reports &amp; complaints" data-lang-vi="Xử lý phản ánh">Handle reports &amp; complaints</span>
+              </li>
+              <li class="flex items-start gap-xs">
+                <span class="material-symbols-outlined text-primary text-sm mt-[2px]">terminal</span>
+                <span data-lang-en="Track system activity statistics" data-lang-vi="Theo dõi thống kê hoạt động hệ thống">Track system activity statistics</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Divider -->
+      <div
+        class="text-concrete-grey mb-section-gap overflow-hidden whitespace-nowrap opacity-30"
+      >
+        ============================================================================================================================================================
+      </div>
+      <!-- Section 01: Candidate Interface -->
+      <section class="mb-section-gap" id="candidate">
+        <!-- Section Intro -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-center mb-lg">
+          <div class="md:col-span-6">
+            <h2
+              class="font-heading text-heading mb-sm text-primary uppercase"
+              data-lang-en="[ CANDIDATE_INTERFACE ]"
+              data-lang-vi="[ GIAO_DIỆN_ỨNG_VIÊN ]"
+            >
+              [ CANDIDATE_INTERFACE ]
+            </h2>
+            <p
+              class="text-body mb-md"
+              data-lang-en="The front-line of the platform. Features include a job search engine, profile management systems, and a real-time application tracking dashboard."
+              data-lang-vi="Là mặt tiền của nền tảng. Bao gồm công cụ tìm việc, hệ thống quản lý hồ sơ và bảng theo dõi đơn ứng tuyển theo thời gian thực."
+            >
+              The front-line of the platform. Features include a dynamic job
+              search engine, profile management systems, and a real-time
+              application tracking dashboard. Designed for speed and minimal
+              friction.
+            </p>
+          </div>
+        </div>
+        <!-- Image Gallery (full width, zigzag) -->
+        <div class="space-y-lg">
+          <!-- Image 1: Ảnh TRÁI, Caption PHẢI -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-7 relative group">
+              <div
+                class="absolute -top-4 -left-4 bg-off-white text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_001_CANDIDATE
+              </div>
+              <div
+                class="border-2 border-off-white p-2 brutalist-shadow-yellow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Ung_vien3_TrangChu.png"
+                    alt="Candidate home screen overview"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 1 – Candidate search"
+                data-lang-vi="Ảnh 1 – Tìm kiếm việc làm"
+              >
+                Ảnh 1 – Candidate search
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="A modern candidate homepage with quick filters, featured jobs, and fast access to saved CVs."
+                data-lang-vi="Trang chủ ứng viên hiện đại với bộ lọc nhanh, công việc nổi bật và truy cập nhanh vào CV đã lưu."
+              >
+                A modern candidate homepage with quick filters, featured jobs,
+                and fast access to saved CVs.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Candidate portal"
+                  data-lang-vi="Cổng thông tin ứng viên"
+                >Candidate portal</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Homepage for filtering and searching for jobs."
+                  data-lang-vi="Trang chủ để lọc và tìm kiếm việc làm."
+                >
+                  Homepage for filtering and searching for jobs.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image 2: Caption TRÁI, Ảnh PHẢI (so le) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-5 lg:order-1 order-2">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 2 – CV Management"
+                data-lang-vi="Ảnh 2 – Quản lý CV"
+              >
+                Image 2 – CV Management
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Profile and CV manager with active application status and document controls."
+                data-lang-vi="Quản lý hồ sơ và CV với trạng thái ứng tuyển đang hoạt động cùng các điều khiển tài liệu."
+              >
+                Profile and CV manager with active application status and
+                document controls.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Candidate dashboard"
+                  data-lang-vi="Bảng điều khiển ứng viên"
+                >Candidate dashboard</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Users can update their CV, track applications, and view interview invitations."
+                  data-lang-vi="Người dùng có thể cập nhật CV, theo dõi đơn ứng tuyển và xem lời mời phỏng vấn."
+                >
+                  Users can update their CV, track applications, and view
+                  interview invitations.
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-7 lg:order-2 order-1 relative group">
+              <div
+                class="absolute -top-4 -right-4 bg-primary text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_001_CANDIDATE
+              </div>
+              <div
+                class="border-2 border-primary p-2 brutalist-shadow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Ung_vien4_QuanLyCV.png"
+                    alt="Candidate CV management screen"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image 3: Ảnh TRÁI, Caption PHẢI -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-7 relative group">
+              <div
+                class="absolute -top-4 -left-4 bg-off-white text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_001_CANDIDATE
+              </div>
+              <div
+                class="border-2 border-off-white p-2 brutalist-shadow-yellow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Ung_vien1_UngTuyen.png"
+                    alt="Candidate job application screen"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 3 - Application Flow"
+                data-lang-vi="Ảnh 3 - Quy Trình Ứng Tuyển"
+              >
+                Image 3 - Application_Flow
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Streamlined application interface allowing candidates to apply with a single click, attach CVs, and write cover letters."
+                data-lang-vi="Giao diện ứng tuyển tối ưu cho phép ứng viên nộp đơn chỉ với một cú nhấp, đính kèm CV và viết thư xin việc."
+              >
+                Streamlined application interface allowing candidates to apply
+                with a single click, attach CVs, and write cover letters.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="One-click apply"
+                  data-lang-vi="Ứng tuyển nhanh"
+                >One-click apply</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Candidates can submit applications directly from the job detail page."
+                  data-lang-vi="Ứng viên có thể nộp đơn trực tiếp từ trang chi tiết công việc."
+                >
+                  Candidates can submit applications directly from the job detail page.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Divider -->
+      <div
+        class="text-concrete-grey mb-section-gap text-right overflow-hidden whitespace-nowrap opacity-30"
+      >
+        ------------------------------------------------------------------------------------------------------------------------------------------------------------
+      </div>
+      <!-- Section 02: Employer Dashboard -->
+      <section class="mb-section-gap" id="employer">
+        <!-- Section Intro -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-center mb-lg">
+          <div class="md:col-span-6">
+            <h2
+              class="font-heading text-heading mb-sm text-off-white uppercase"
+              data-lang-en="[ EMPLOYER_INTERFACE ]"
+              data-lang-vi="[ GIAO_DIỆN_NHÀ_TUYỂN_DỤNG ]"
+            >
+              [ EMPLOYER_INTERFACE ]
+            </h2>
+            <p
+              class="text-body mb-md"
+              data-lang-en="Command center for talent acquisition. Job posting workflows are streamlined, candidate management is data-driven, and company profile customization allows for unique branding in a crowded market."
+              data-lang-vi="Trung tâm điều phối tuyển dụng. Quy trình đăng tin được tối ưu, quản lý ứng viên dựa trên dữ liệu và tùy chỉnh hồ sơ công ty giúp thương hiệu nổi bật trong thị trường cạnh tranh."
+            >
+              Command center for talent acquisition. Job posting workflows are
+              streamlined, candidate management is data-driven, and company
+              profile customization allows for unique branding in a crowded
+              market.
+            </p>
+          </div>
+          <div class="md:col-span-6 flex md:justify-end">
+          </div>
+        </div>
+        <!-- Image Gallery (full width, zigzag) -->
+        <div class="space-y-lg">
+          <!-- Image 3: Ảnh TRÁI, Caption PHẢI -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-7 relative group">
+              <div
+                class="absolute -top-4 -right-4 bg-primary text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_002_EMPLOYER
+              </div>
+              <div
+                class="border-2 border-primary p-2 brutalist-shadow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/NhaTuyendung2_TaoTinTuyenDung.png"
+                    alt="Employer create job posting screen"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 5 – Job posting flow"
+                data-lang-vi="Ảnh 5 – Quy trình đăng tin"
+              >
+                Image 5 – Job posting flow
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Employer dashboard for posting jobs, reviewing candidates, and customizing company profiles."
+                data-lang-vi="Bảng điều khiển của nhà tuyển dụng để đăng tin, xem hồ sơ ứng viên và tùy chỉnh trang doanh nghiệp."
+              >
+                Employer dashboard for posting jobs, reviewing candidates, and
+                customizing company profiles.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Employer flow"
+                  data-lang-vi="Quy trình tuyển dụng"
+                >
+                  Employer flow
+                </div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="The job creator and verification screens give recruiters a fast publishing experience."
+                  data-lang-vi="Trang tạo việc làm và xác thực giúp nhà tuyển dụng có trải nghiệm đăng tin nhanh chóng."
+                >
+                  The job creator and verification screens give recruiters a
+                  fast publishing experience.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image 4: Caption TRÁI, Ảnh PHẢI (so le) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-5 lg:order-1 order-2">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 6 – Business Verification"
+                data-lang-vi="Ảnh 6 – Xác minh doanh nghiệp"
+              >
+                Image 6 – Business Verification
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Business verification and company profile configuration for trusted recruiters."
+                data-lang-vi="Xác minh doanh nghiệp và cấu hình thông tin công ty dành cho nhà tuyển dụng đáng tin cậy."
+              >
+                Business verification and company profile configuration for
+                trusted recruiters.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Business Verification"
+                  data-lang-vi="Xác minh doanh nghiệp"
+                >Business Verification</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Recruiters can validate their business and manage listings with clarity."
+                  data-lang-vi="Nhà tuyển dụng có thể xác thực doanh nghiệp của mình và quản lý tin đăng rõ ràng."
+                >
+                  Recruiters can validate their business and manage listings
+                  with clarity.
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-7 lg:order-2 order-1 relative group">
+              <div
+                class="absolute -top-4 -left-4 bg-off-white text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_002_EMPLOYER
+              </div>
+              <div
+                class="border-2 border-off-white p-2 brutalist-shadow-yellow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/NhaTuyenDung1_XacMinhDoanhNghiep.png"
+                    alt="Employer business verification screen"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Divider -->
+      <div
+        class="text-concrete-grey mb-section-gap overflow-hidden whitespace-nowrap opacity-30"
+      >
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      </div>
+      <!-- Section 03: Admin Portal -->
+      <section class="mb-section-gap" id="admin">
+        <!-- Section Intro -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-center mb-lg">
+          <div class="md:col-span-6">
+            <h2
+              class="font-heading text-heading mb-sm text-primary uppercase"
+              data-lang-en="[ ADMIN_INTERFACE ]"
+              data-lang-vi="[ GIAO_DIỆN_QUẢN_TRỊ ]"
+            >
+              [ ADMIN_INTERFACE ]
+            </h2>
+            <p
+              class="text-body mb-md"
+              data-lang-en="Full user management, job moderation pipelines, and system statistics presented via a raw telemetry dashboard."
+              data-lang-vi="Quản lý người dùng, kiểm duyệt tin tuyển dụng và thống kê hệ thống được trình bày qua bảng điều khiển dữ liệu thô."
+            >
+              Full user management, job moderation pipelines, and
+              system statistics presented via a raw telemetry dashboard.
+            </p>
+          </div>
+        </div>
+        <!-- Image Gallery (full width, zigzag) -->
+        <div class="space-y-lg">
+          <!-- Image 5: Ảnh TRÁI, Caption PHẢI -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-7 relative group">
+              <div
+                class="absolute -top-4 -left-4 bg-off-white text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_003_ADMIN
+              </div>
+              <div
+                class="border-2 border-off-white p-2 brutalist-shadow-yellow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Admin1_QuanLyDanhMuc.png"
+                    alt="Admin category management interface"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 7 – Admin Catalog"
+                data-lang-vi="Ảnh 7 – Quản lý danh mục"
+              >
+                Image 7 – Admin Catalog
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Admin tools for managing job categories, skills, and platform settings."
+                data-lang-vi="Bộ công cụ quản trị để quản lý danh mục công việc, kỹ năng và cấu hình hệ thống."
+              >
+                Admin tools for managing job categories, skills, and platform
+                settings.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Catalog Management"
+                  data-lang-vi="Quản lý danh mục"
+                >Catalog Management</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="The catalog editor enables rapid updates."
+                  data-lang-vi="Trình chỉnh sửa danh mục cho phép cập nhật nhanh chóng các tùy chọn."
+                >
+                  The catalog editor enables rapid updatesupdates.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image 6: Caption TRÁI, Ảnh PHẢI (so le) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-5 lg:order-1 order-2">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 8 – Moderation &amp; Complaints"
+                data-lang-vi="Ảnh 8 – Kiểm duyệt &amp; Khiếu nại"
+              >
+                Image 8 – Moderation &amp; Complaints
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Complaint review and moderation flows keep employer listings compliant and transparent."
+                data-lang-vi="Quy trình xem xét khiếu nại và kiểm duyệt giúp tin đăng của nhà tuyển dụng minh bạch, tuân thủ quy định."
+              >
+                Complaint review and moderation flows keep employer listings
+                compliant and transparent.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Admin Oversight"
+                  data-lang-vi="Giám sát của Admin"
+                >Admin Oversight</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Moderators can inspect, confirm or dismiss reports, and maintain trust across the platform."
+                  data-lang-vi="Người kiểm duyệt có thể kiểm tra, xác nhận hoặc hủy bỏ báo cáo và duy trì sự tin cậy trên nền tảng."
+                >
+                  Moderators can inspect, confirm or dismiss reports,
+                  and maintain trust across the platform.
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-7 lg:order-2 order-1 relative group">
+              <div
+                class="absolute -top-4 -right-4 bg-primary text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_003_ADMIN
+              </div>
+              <div
+                class="border-2 border-primary p-2 brutalist-shadow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Admin2_QuanLyKhieuNai.png"
+                    alt="Admin complaint management screen"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Image 7: Ảnh TRÁI, Caption PHẢI -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+            <div class="lg:col-span-7 relative group">
+              <div
+                class="absolute -top-4 -left-4 bg-off-white text-background px-sm font-bold z-10 border-2 border-background"
+              >
+                VIEW_003_ADMIN
+              </div>
+              <div
+                class="border-2 border-off-white p-2 brutalist-shadow-yellow transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none"
+              >
+                <div
+                  class="bg-background xerox-filter relative overflow-hidden border-2 border-background" style="height: 45vh; min-height: 320px;"
+                >
+                  <img
+                    class="w-full h-full object-cover object-top"
+                    src="assets/images/Admin3_CauHinhWeb.png"
+                    alt="Admin web configuration interface"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div
+                class="text-caption uppercase text-primary font-bold mb-xs"
+                data-lang-en="Image 9 - System Config"
+                data-lang-vi="Ảnh 9 - Cấu Hình Hệ Thống"
+              >
+                Image 9 - System Config
+              </div>
+              <p class="text-body mb-sm"
+                data-lang-en="Web configuration panel for managing site-wide settings, banner content, and platform parameters."
+                data-lang-vi="Bảng cấu hình web để quản lý cài đặt toàn trang, nội dung banner và các thông số nền tảng."
+              >
+                Web configuration panel for managing site-wide settings,
+                banner content, and platform parameters.
+              </p>
+              <div
+                class="bg-surface-container p-sm border-2 border-on-surface"
+              >
+                <div class="text-caption font-bold"
+                  data-lang-en="Platform control"
+                  data-lang-vi="Điều khiển nền tảng"
+                >Platform control</div>
+                <div class="text-caption text-concrete-grey"
+                  data-lang-en="Admins can fine-tune website behavior, toggle features, and customize the platform appearance."
+                  data-lang-vi="Quản trị viên có thể tinh chỉnh hoạt động website, bật/tắt tính năng và tùy chỉnh giao diện nền tảng."
+                >
+                  Admins can fine-tune website behavior, toggle features,
+                  and customize the platform appearance.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="section-gap px-md py-lg border-t-2 border-dashed border-on-background"
+      id="contact"
+    >
+      <div
+        class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md"
+      >
+        <div>
+          <h2 class="font-heading text-heading text-dirty-yellow uppercase">
+            BÙI VIỆT QUỐC
+          </h2>
+          <p class="text-caption text-concrete-grey">
+            ©2026 //
+          </p>
+        </div>
+        <div class="flex flex-col items-end gap-sm">
+          <p
+            class="font-heading text-subheading uppercase"
+            data-lang-en="[ REACH_OUT ]"
+            data-lang-vi="[ LIÊN_HỆ ]"
+          >
+            [ REACH_OUT ]
+          </p>
+          <div class="flex gap-md">
+            <a
+              class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black transition-all"
+              href="https://github.com/anhhit1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GITHUB
+            </a>
+            <div class="email-action">
+              <a
+                id="emailButton"
+                class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black transition-all"
+                href="mailto:buiquoc2k4@gmail.com"
+              >
+                EMAIL
+              </a>
+              <span class="email-reveal" id="emailReveal" aria-hidden="true"
+                >buiquoc2k4@gmail.com</span
+              >
+            </div>
+            <a
+              class="w-fit px-md py-xs bg-faded-black text-off-white font-bold border-2 border-off-white hover:bg-dirty-yellow hover:text-faded-black transition-all"
+              href="https://www.linkedin.com/in/quoc-bui-3680413a3/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LINKEDIN
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const langToggle = document.getElementById("langToggle");
+      let currentLang = "vi";
+
+      const applyLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-lang-en]").forEach((el) => {
+          const content = el.getAttribute(`data-lang-${lang}`) || "";
+          if (content.includes("<")) {
+            el.innerHTML = content;
+          } else {
+            el.textContent = content;
+          }
+        });
+        if (langToggle) {
+          langToggle.textContent =
+            lang === "en" ? "[ EN / VI ]" : "[ VI / EN ]";
+        }
+      };
+
+      if (langToggle) {
+        langToggle.addEventListener("click", () => {
+          currentLang = currentLang === "en" ? "vi" : "en";
+          applyLanguage(currentLang);
+        });
+      }
+
+      applyLanguage(currentLang);
+
+      const emailButton = document.getElementById("emailButton");
+      const emailReveal = document.getElementById("emailReveal");
+
+      const showEmail = () => emailReveal.classList.add("is-visible");
+      const hideEmail = () => emailReveal.classList.remove("is-visible");
+
+      if (emailButton && emailReveal) {
+        emailButton.addEventListener("mouseenter", showEmail);
+        emailButton.addEventListener("focus", showEmail);
+        emailButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          emailReveal.classList.toggle("is-visible");
+        });
+        emailButton.addEventListener("mouseleave", () => {
+          if (!emailReveal.classList.contains("is-visible")) return;
+          hideEmail();
+        });
+        emailButton.addEventListener("blur", hideEmail);
+      }
+    </script>
+    <!-- Micro-interaction Script -->
+    <script>
+      // Simple flicker effect for the glitch text
+      setInterval(() => {
+        const glitch = document.querySelector(".glitch-text");
+        if (Math.random() > 0.95) {
+          glitch.style.opacity = "0.5";
+          setTimeout(() => (glitch.style.opacity = "1"), 50);
+        }
+      }, 100);
+
+      // Hover tilt effect for cards
+      document
+        .querySelectorAll(".brutalist-shadow, .brutalist-shadow-yellow")
+        .forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const midX = rect.width / 2;
+            const midY = rect.height / 2;
+            const tiltX = (y - midY) / 50;
+            const tiltY = (midX - x) / 50;
+            card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+          });
+          card.addEventListener("mouseleave", () => {
+            card.style.transform =
+              "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+          });
+        });
+    </script>
+  </body>
+</html>

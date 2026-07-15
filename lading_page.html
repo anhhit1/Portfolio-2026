@@ -1,0 +1,1310 @@
+<!doctype html>
+
+<html class="dark" lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bùi Việt Quốc - Python Developer</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link
+      rel="shortcut icon"
+      type="image/svg+xml"
+      href="assets/icons/favicon.svg"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      try {
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                primary: "#d8c860",
+                background: "#2E2E2E",
+                surface: "#2E2E2E",
+                "on-background": "#E9E1D4",
+                "off-white": "#E9E1D4",
+                "dirty-yellow": "#B5A642",
+                "faded-black": "#2E2E2E",
+                "concrete-grey": "#7A7A7A",
+                outline: "#96917e",
+              },
+              borderRadius: {
+                DEFAULT: "0.125rem",
+              },
+              spacing: {
+                sm: "16px",
+                lg: "48px",
+                "container-max": "1280px",
+                "section-gap": "96px",
+                xs: "8px",
+                md: "24px",
+              },
+              fontFamily: {
+                body: ["Courier Prime", "Courier New", "monospace"],
+                heading: ["Courier Prime", "Courier New", "monospace"],
+              },
+              fontSize: {
+                body: [
+                  "16px",
+                  { lineHeight: "26px", letterSpacing: "0", fontWeight: "400" },
+                ],
+                display: [
+                  "64px",
+                  {
+                    lineHeight: "64px",
+                    letterSpacing: "-2px",
+                    fontWeight: "700",
+                  },
+                ],
+                heading: [
+                  "36px",
+                  {
+                    lineHeight: "40px",
+                    letterSpacing: "-1px",
+                    fontWeight: "700",
+                  },
+                ],
+                subheading: [
+                  "24px",
+                  {
+                    lineHeight: "32px",
+                    letterSpacing: "-0.5px",
+                    fontWeight: "700",
+                  },
+                ],
+                caption: [
+                  "14px",
+                  {
+                    lineHeight: "18px",
+                    letterSpacing: "0.5px",
+                    fontWeight: "400",
+                  },
+                ],
+              },
+            },
+          },
+        };
+      } catch (_e) {}
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      section[id], footer[id] {
+        scroll-margin-top: 100px;
+      }
+      .dark {
+        --bg-color: #2e2e2e;
+        --text-color: #e9e1d4;
+      }
+      .light {
+        --bg-color: #e9e1d4;
+        --text-color: #2e2e2e;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+      .section-gap {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+      @media (min-width: 768px) {
+        .section-gap {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+      }
+      .section-gap + .section-gap {
+        padding-top: 3.5rem;
+      }
+      .brutalist-shadow-hover:hover {
+        box-shadow: 8px 8px 0px 0px #b5a642 !important;
+      }
+      .xerox-filter {
+        filter: grayscale(1) contrast(1.5) brightness(0.9);
+      }
+      .group:hover .xerox-filter {
+        filter: grayscale(0) contrast(1) brightness(1);
+      }
+      .tape-effect {
+        background: #b5a642;
+        padding: 0 8px;
+        display: inline-block;
+      }
+      .stamped-title {
+        transition: all 0.3s ease;
+      }
+      .group:hover .stamped-title {
+        background-color: #b5a642;
+        color: #2e2e2e;
+        padding: 2px 8px;
+        transform: rotate(-1deg);
+      }
+      .brutalist-shadow {
+        box-shadow: 8px 8px 0px 0px #b5a642;
+      }
+      .grainy-bg {
+        background-image: linear-gradient(
+          135deg,
+          rgba(181, 166, 66, 0.16) 0%,
+          rgba(181, 166, 66, 0.02) 100%
+        );
+      }
+      .duct-tape {
+        position: absolute;
+        width: 120px;
+        height: 28px;
+        background: rgba(181, 166, 66, 0.35);
+        border: 1px solid rgba(233, 225, 212, 0.25);
+      }
+      /* Top navigation: underline on hover instead of background highlight */
+      .top-nav-link:hover {
+        background: transparent !important;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+      /* Toolkit icons + horizontal float animation */
+      .tool-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+      .tool-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tool-item .icon {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+      @keyframes floatX {
+        0% {
+          transform: translateX(-6px);
+        }
+        100% {
+          transform: translateX(6px);
+        }
+      }
+      .tool-row .tool-item {
+        animation-name: floatX;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      .tool-row .tool-item:nth-child(odd) {
+        animation-duration: 3s;
+      }
+      .tool-row .tool-item:nth-child(even) {
+        animation-duration: 4s;
+      }
+      .process-card {
+        position: relative;
+        overflow: hidden;
+        border: 2px solid rgba(233, 225, 212, 0.22);
+        background: linear-gradient(
+          135deg,
+          rgba(46, 46, 46, 0.96),
+          rgba(46, 46, 46, 0.9)
+        );
+        box-shadow: 6px 6px 0 rgba(181, 166, 66, 0.16);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .process-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        background: linear-gradient(180deg, #d8c860 0%, #b5a642 100%);
+        transform: scaleY(0.18);
+        transform-origin: top;
+        transition: transform 0.25s ease;
+      }
+      .process-card:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 10px 10px 0 rgba(181, 166, 66, 0.35);
+        border-color: #d8c860;
+      }
+      .process-card:hover::before {
+        transform: scaleY(1);
+      }
+      .process-card--featured {
+        border-color: #d8c860;
+        background: linear-gradient(
+          135deg,
+          rgba(181, 166, 66, 0.16),
+          rgba(46, 46, 46, 0.95)
+        );
+      }
+      .process-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.4rem;
+        padding: 0.25rem 0.5rem;
+        margin-bottom: 0.75rem;
+        border: 1px solid rgba(233, 225, 212, 0.25);
+        background: rgba(181, 166, 66, 0.16);
+        color: #d8c860;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+      }
+      .email-action {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+      }
+      .email-reveal {
+        position: absolute;
+        top: calc(100% + 0.35rem);
+        left: 0;
+        z-index: 20;
+        display: none;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid rgba(233, 225, 212, 0.25);
+        background: rgba(46, 46, 46, 0.96);
+        color: #d8c860;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        box-shadow: 4px 4px 0 rgba(181, 166, 66, 0.2);
+        white-space: nowrap;
+      }
+      .email-action:hover .email-reveal,
+      .email-action:focus-within .email-reveal,
+      .email-reveal.is-visible {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body text-body selection:bg-primary selection:text-faded-black"
+  >
+    <!-- TopNavBar -->
+    <nav
+      class="fixed top-0 w-full z-50 flex flex-wrap justify-between items-center px-md py-xs bg-background border-b-2 border-on-background transition-colors duration-300"
+    >
+      <div
+        class="font-heading text-heading uppercase text-primary tracking-tighter"
+        data-lang-en="BÙI VIỆT QUỐC"
+        data-lang-vi="BÙI VIỆT QUỐC"
+      >
+        BÙI VIỆT QUỐC
+      </div>
+      <div class="flex items-center gap-md">
+        <div class="hidden md:flex gap-md">
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ PROJECT ]"
+            data-lang-vi="[ DỰ ÁN ]"
+            href="#work"
+            >[ PROJECT ]</a
+          >
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ SKILLS ]"
+            data-lang-vi="[ KỸ NĂNG ]"
+            href="#expertise"
+            >[ SKILLS ]</a
+          >
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ JOURNEY ]"
+            data-lang-vi="[ HÀNH TRÌNH ]"
+            href="#journey"
+            >[ JOURNEY ]</a
+          >
+          <a
+            class="text-on-background hover:text-primary transition-transform px-1 top-nav-link"
+            data-lang-en="[ CONTACT ]"
+            data-lang-vi="[ LIÊN HỆ ]"
+            href="#contact"
+            >[ CONTACT ]</a
+          >
+        </div>
+        <div class="flex items-center gap-xs ml-md">
+          <button
+            class="text-on-background font-bold border-2 border-on-background px-xs py-[2px] hover:bg-dirty-yellow transition-colors"
+            id="langToggle"
+          >
+            [ EN / VI ]
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-24">
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-[75vh] flex flex-col items-center justify-center overflow-hidden px-md py-16 md:py-24"
+      >
+        <div class="flex flex-col md:flex-row items-center gap-lg z-10">
+          <div
+            class="h-40 w-40 md:h-56 md:w-56 mr-6 rotate-2 border-2 border-on-background brutalist-shadow-hover transition-all duration-300 overflow-hidden"
+          >
+            <img
+              class="w-full h-full object-cover"
+              src="./assets/images/profile4.jpg"
+              alt="Profile"
+            />
+          </div>
+          <div
+            class="text-display font-heading flex flex-col leading-none group"
+          >
+            <span class="glitch-hover group-hover:skew-x-2" data-text="BÙI"
+              >BÙI</span
+            >
+            <span
+              class="pl-lg glitch-hover group-hover:skew-x-2"
+              data-text="VIỆT"
+              >VIỆT</span
+            >
+            <span
+              class="pl-xl text-dirty-yellow glitch-hover group-hover:skew-x-2"
+              data-text="QUỐC"
+              >QUỐC</span
+            >
+          </div>
+          <div class="max-w-xs border-l-4 border-dirty-yellow pl-md py-sm">
+            <p
+              class="font-bold text-subheading mb-xs"
+              data-lang-en="PYTHON_DEVELOPER"
+              data-lang-vi="LẬP_TRÌNH_VIÊN_PYTHON"
+            >
+              PYTHON_DEVELOPER
+            </p>
+            <p
+              class="font-bold text-subheading"
+              data-lang-en="// AI_ENGINEER"
+              data-lang-vi="// KỸ_SƯ_AI"
+            >
+              // AI_ENGINEER
+            </p>
+            <p
+              class="mt-md text-concrete-grey"
+              data-lang-en="Develop robust logic systems and apply Machine Learning, Deep Learning, and AI to real-world situations."
+              data-lang-vi="Xây dựng hệ thống logic mạnh mẽ và ứng dụng Machine Learning, Deep Learning và AI vào thực tế."
+            >
+              Develop robust logic systems and apply Machine Learning, Deep
+              Learning, and AI to real-world situations.
+            </p>
+          </div>
+        </div>
+        <div class="mt-section-gap w-full max-w-4xl text-center">
+          <div class="text-dirty-yellow opacity-50 select-none">
+            ================================================================================
+          </div>
+        </div>
+      </section>
+      <!-- Career Goal -->
+      <section class="section-gap px-md -mt-12 md:-mt-20">
+        <div
+          class="max-w-3xl mx-auto bg-dirty-yellow p-lg border-4 border-faded-black brutalist-shadow transform -rotate-1"
+        >
+          <h2
+            class="font-heading text-heading text-faded-black mb-md uppercase"
+            data-lang-en="GOAL_STATEMENT"
+            data-lang-vi="TÓM_TẮT_MỤC_TIÊU"
+          >
+            GOAL_STATEMENT
+          </h2>
+          <p
+            class="text-faded-black font-bold text-subheading"
+            data-lang-en="MY OBJECTIVE IS TO BECOME A PYTHON DEVELOPER CAPABLE OF DESIGNING AND BUILDING HIGH-QUALITY SOFTWARE SYSTEMS, APPLYING AND INTEGRATING AI TO CREATE SMART, EFFICIENT, AND HIGHLY PRACTICAL PRODUCTS."
+            data-lang-vi="MỤC TIÊU CỦA TÔI LÀ TRỞ THÀNH MỘT PYTHON DEVELOPER CÓ KHẢ NĂNG THIẾT KẾ VÀ XÂY DỰNG CÁC HỆ THỐNG PHẦN MỀM CHẤT LƯỢNG CAO, ỨNG DỤNG VÀ TÍCH HỢP AI ĐỂ TẠO RA NHỮNG SẢN PHẨM THÔNG MINH, HIỆU QUẢ VÀ CÓ GIÁ TRỊ THỰC TIỄN."
+          >
+            "MY OBJECTIVE IS TO BECOME A PYTHON DEVELOPER CAPABLE OF DESIGNING
+            AND BUILDING HIGH-QUALITY SOFTWARE SYSTEMS, APPLYING AND INTEGRATING
+            AI TO CREATE SMART, EFFICIENT, AND HIGHLY PRACTICAL PRODUCTS."
+          </p>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section
+        class="section-gap px-md max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-md"
+      >
+        <div class="md:col-span-7 md:col-start-1">
+          <h2 class="font-heading text-heading mb-lg uppercase">
+            <span
+              class="tape-effect text-faded-black"
+              data-lang-en="01_INTRODUCE"
+              data-lang-vi="01_GIỚI_THIỆU"
+              >01_INTRODUCE</span
+            >
+          </h2>
+          <p
+            class="max-w-[72ch] text-body leading-relaxed mb-md"
+            data-lang-en="I am a Python Developer with a strong focus on Backend development and building applications that integrate Artificial Intelligence (AI)."
+            data-lang-vi="Tôi là một Python Developer với định hướng phát triển Backend và xây dựng các ứng dụng tích hợp Trí tuệ Nhân tạo (AI)."
+          >
+            I am a Python Developer with a strong focus on Backend development
+            and building applications that integrate Artificial Intelligence
+            (AI).
+          </p>
+          <p
+            class="max-w-[72ch] text-body leading-relaxed mb-md"
+            data-lang-en="I have been learning and practicing system design, developing complete web applications and applying AI to solve real-world problems."
+            data-lang-vi="Tôi đã và đang học hỏi cũng như thực hành việc thiết kế hệ thống, phát triển các ứng dụng web hoàn chỉnh và ứng dụng AI để giải quyết các bài toán thực tế."
+          >
+            I have been learning and practicing system design, developing
+            complete web applications, and applying AI to solve real-world
+            problems.
+          </p>
+          <p
+            class="max-w-[72ch] text-body leading-relaxed"
+            data-lang-en="I am currently looking for opportunities to grow in roles such as <span class='tape-effect text-faded-black inline-block'>Python Developer</span> or <span class='tape-effect text-faded-black inline-block'>AI Developer</span>, where I can contribute to high-quality products and continue improving my expertise."
+            data-lang-vi="Hiện tôi đang tìm kiếm cơ hội phát triển ở vị trí <span class='tape-effect text-faded-black inline-block'>Python Developer</span> hoặc <span class='tape-effect text-faded-black inline-block'>AI Developer</span>, nơi tôi có thể đóng góp vào các sản phẩm chất lượng và tiếp tục nâng cao chuyên môn."
+          >
+            I am currently looking for opportunities to grow in roles such as
+            <span class="tape-effect text-faded-black inline-block"
+              >Python Developer</span
+            >, or
+            <span class="tape-effect text-faded-black inline-block"
+              >AI Developer</span
+            >, where I can contribute to high-quality products and continue
+            improving my expertise.
+          </p>
+        </div>
+        <div class="md:col-span-4 md:col-start-9 flex flex-col justify-center">
+          <div
+            class="h-80 w-full rotate-2 border-2 border-on-background brutalist-shadow-hover transition-all duration-300 overflow-hidden"
+          >
+            <img
+              class="w-full h-full object-cover xerox-filter"
+              data-alt="Developer workspace xerox style"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_9NM6vYzDvfZhRtCOCYCsGWLThkMoCpanvRRxn_DVO-hn-JEg3NwXSCD1up9zHMlugYH2BFqTwy4LAC9GhOvVwcv2PEwHCF3p2PcMkODE2WDn0taFsBXP14OTjpmIQjShksEVZs5r_hU94fvW9LCuVpwtfD4qmT7gepE9Dg3pgYxgmgoAW7J95PbLohKXWjg8I5K00hT2L4p-cdoGIzpvJJWnGAeeWN6vWX0euE_OmrvaEq5W2-J-pq2zl_HIeATk6wq7b1qJcUu8"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Projects -->
+      <section class="section-gap px-md max-w-container-max mx-auto" id="work">
+        <h2 class="font-heading text-heading mb-lg uppercase">
+          <span
+            class="tape-effect text-faded-black"
+            data-lang-en="02_FEATURED_WORKS"
+            data-lang-vi="02_DỰ ÁN TIÊU BIỂU"
+            >02_FEATURED_WORKS</span
+          >
+        </h2>
+        <div class="space-y-lg">
+          <!-- Project 1 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-md group cursor-pointer"
+          >
+            <div
+              class="md:col-span-7 border-2 border-on-background brutalist-shadow-hover relative overflow-hidden h-96 transition-all duration-300"
+            >
+              <img
+                class="w-full h-full object-cover xerox-filter group-hover:scale-105 group-hover:-rotate-2 transition-all duration-500"
+                src="assets/images/AI%20Portfolio%20Assistant.png"
+                alt="AI Portfolio Assistant screenshot"
+              />
+            </div>
+            <div class="md:col-span-5 flex flex-col justify-center p-md">
+              <p class="text-dirty-yellow font-bold">2025 // PROJECT_01</p>
+              <h3
+                class="font-heading text-heading mb-xs stamped-title"
+                data-lang-en="AI PORTFOLIO ASSISTANT"
+                data-lang-vi="TRỢ LÝ AI PORTFOLIO"
+              >
+                AI PORTFOLIO ASSISTANT
+              </h3>
+              <p
+                class="text-concrete-grey mb-md"
+                data-lang-en="RAG-based chatbot for personal profile, skills, and project inquiries."
+                data-lang-vi="Chatbot sử dụng RAG giúp trả lời thông tin về bản thân, kỹ năng và dự án."
+              >
+                RAG-based chatbot for personal profile, skills, and project
+                inquiries.
+              </p>
+              <a
+                class="w-fit px-md py-xs bg-dirty-yellow text-faded-black font-bold border-2 border-faded-black inline-block"
+                data-lang-en="CHAT_NOW"
+                data-lang-vi="TRẢI_NGHIỆM"
+                href="https://introduce-myself-omega.vercel.app/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CHAT_NOW
+              </a>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-md group cursor-pointer"
+          >
+            <div
+              class="md:col-span-5 order-2 md:order-1 flex flex-col justify-center p-md text-right items-end"
+            >
+              <p class="text-dirty-yellow font-bold">2025 // PROJECT_02</p>
+              <h3
+                class="font-heading text-heading mb-xs stamped-title"
+                data-lang-en="DRIVER BEHAVIOR DETECTION"
+                data-lang-vi="NHẬN DIỆN HÀNH VI LÁI XE"
+              >
+                DRIVER BEHAVIOR DETECTION
+              </h3>
+              <p
+                class="text-concrete-grey mb-md"
+                data-lang-en="Computer vision application for dangerous driving behavior detection in safety monitoring."
+                data-lang-vi="Ứng dụng thị giác máy tính phát hiện hành vi lái xe nguy hiểm để giám sát an toàn."
+              >
+                Computer vision application for dangerous driving behavior
+                detection in safety monitoring.
+              </p>
+              <a
+                class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black inline-block"
+                data-lang-en="DETAILS"
+                data-lang-vi="CHI_TIẾT"
+                href="https://introduce-myself-omega.vercel.app/detail_driver_behavior_detection.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                DETAILS
+              </a>
+            </div>
+            <div
+              class="md:col-span-7 order-1 md:order-2 border-2 border-on-background brutalist-shadow-hover relative overflow-hidden h-96 transition-all duration-300"
+            >
+              <img
+                class="w-full h-full object-cover xerox-filter group-hover:scale-105 group-hover:-rotate-2 transition-all duration-500"
+                src="assets/images/detail_driver_behavior_detection_1.png"
+                alt="Driver behavior detection screenshot"
+              />
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-md group cursor-pointer"
+          >
+            <div
+              class="md:col-span-7 border-2 border-on-background brutalist-shadow-hover relative overflow-hidden h-96 transition-all duration-300"
+            >
+              <img
+                class="w-full h-full object-cover xerox-filter group-hover:scale-105 group-hover:-rotate-2 transition-all duration-500"
+                src="assets/images/Job%20Finder.png"
+                alt="Job Finder screenshot"
+              />
+            </div>
+            <div class="md:col-span-5 flex flex-col justify-center p-md">
+              <p class="text-dirty-yellow font-bold">2026 // PROJECT_03</p>
+              <h3
+                class="font-heading text-heading mb-xs stamped-title"
+                data-lang-en="JOB FINDER"
+                data-lang-vi="WEBSITE TÌM VIỆC"
+              >
+                JOB FINDER
+              </h3>
+              <p
+                class="text-concrete-grey mb-md"
+                data-lang-en="A job search platform with features for job seekers, employers, and administrators."
+                data-lang-vi="Nền tảng tìm kiếm việc làm với các chức năng dành cho ứng viên, nhà tuyển dụng và người quản trị."
+              >
+                A job search platform with features for job seekers, employers,
+                and administrators.
+              </p>
+              <a
+                class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black inline-block"
+                data-lang-en="DETAILS"
+                data-lang-vi="CHI_TIẾT"
+                href="detail_JobFinder.html"
+              >
+                DETAILS
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Expertise Section -->
+      <section
+        class="section-gap px-md max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-md"
+        id="expertise"
+      >
+        <div class="md:col-span-8 md:col-start-1 flex flex-col items-start">
+          <h2 class="font-heading text-heading mb-lg uppercase">
+            <span
+              class="tape-effect text-faded-black"
+              data-lang-en="03_EXPERTISE"
+              data-lang-vi="03_CHUYÊN_MÔN"
+              >03_EXPERTISE</span
+            >
+          </h2>
+          <div class="flex flex-col gap-lg w-full">
+            <div
+              class="w-full border-b-2 border-dashed border-concrete-grey pb-sm group p-sm transition-all duration-300 hover:border-2 hover:border-dirty-yellow hover:translate-x-1"
+            >
+              <div class="flex items-start gap-md">
+                <span
+                  class="text-dirty-yellow font-bold mt-1 group-hover:translate-x-2 transition-transform"
+                  >--&gt;</span
+                >
+                <div>
+                  <span
+                    class="text-subheading font-heading block"
+                    data-lang-en="BACKEND DEVELOPMENT"
+                    data-lang-vi="PHÁT TRIỂN BACKEND"
+                    >BACKEND DEVELOPMENT</span
+                  >
+                  <p
+                    class="text-concrete-grey mt-xs max-w-lg"
+                    data-lang-en="Architecting robust server-side logic and database."
+                    data-lang-vi="Thiết kế logic phía máy chủ và cơ sở dữ liệu."
+                  >
+                    Architecting robust server-side logic and database.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full border-b-2 border-dashed border-concrete-grey pb-sm group p-sm transition-all duration-300 hover:border-2 hover:border-dirty-yellow hover:translate-x-1"
+            >
+              <div class="flex items-start gap-md">
+                <span
+                  class="text-dirty-yellow font-bold mt-1 group-hover:translate-x-2 transition-transform"
+                  >--&gt;</span
+                >
+                <div>
+                  <span
+                    class="text-subheading font-heading block"
+                    data-lang-en="PYTHON DEVELOPMENT"
+                    data-lang-vi="LẬP TRÌNH PYTHON"
+                    >PYTHON DEVELOPMENT</span
+                  >
+                  <p
+                    class="text-concrete-grey mt-xs max-w-lg"
+                    data-lang-en="My core language, used alongside the Django framework, build APIs and write clean, efficient data processing scripts."
+                    data-lang-vi="Ngôn ngữ chuyên môn, sử dụng framework Django, xây dựng API và các script xử lý dữ liệu hiệu quả, sạch sẽ."
+                  >
+                    My core language, used alongside the Django framework, build
+                    APIs and write clean, efficient data processing scripts.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full border-b-2 border-dashed border-concrete-grey pb-sm group p-sm transition-all duration-300 hover:border-2 hover:border-dirty-yellow hover:translate-x-1"
+            >
+              <div class="flex items-start gap-md">
+                <span
+                  class="text-dirty-yellow font-bold mt-1 group-hover:translate-x-2 transition-transform"
+                  >--&gt;</span
+                >
+                <div>
+                  <span
+                    class="text-subheading font-heading block"
+                    data-lang-en="ARTIFICIAL INTELLIGENCE"
+                    data-lang-vi="TRÍ TUỆ NHÂN TẠO"
+                    >ARTIFICIAL INTELLIGENCE</span
+                  >
+                  <p
+                    class="text-concrete-grey mt-xs max-w-lg"
+                    data-lang-en="Integration and Deployment LLMs, image recognition model, and predictive analytics into real-world tools."
+                    data-lang-vi="Tích hợp LLM, mô hình nhận diện hình ảnh và phân tích dự đoán vào các công cụ thực tế."
+                  >
+                    Integration and Deployment LLMs, image recognition model,
+                    and predictive analytics into real-world tools.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Tech Stack -->
+      <section class="section-gap px-md max-w-4xl mx-auto">
+        <div class="text-center mb-lg">
+          <p
+            class="font-heading text-subheading uppercase"
+            data-lang-en="[ THE_TOOLKIT ]"
+            data-lang-vi="[ BỘ CÔNG CỤ ]"
+          >
+            [ THE_TOOLKIT ]
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-sm justify-center tool-row">
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >Python</span
+          >
+          <span
+            class="bg-faded-black text-off-white px-sm py-xs font-bold border-2 border-off-white hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >DJANGO</span
+          >
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >FastAPI</span
+          >
+          <span
+            class="bg-faded-black text-off-white px-sm py-xs font-bold border-2 border-off-white hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >Vercel</span
+          >
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >PYTORCH</span
+          >
+          <span
+            class="bg-faded-black text-off-white px-sm py-xs font-bold border-2 border-off-white hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >MySQL</span
+          >
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >REACT</span
+          >
+          <span
+            class="bg-faded-black text-off-white px-sm py-xs font-bold border-2 border-off-white hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >OpenAI_API</span
+          >
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >Render</span
+          >
+          <span
+            class="bg-faded-black text-off-white px-sm py-xs font-bold border-2 border-off-white hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >HTML</span
+          >
+          <span
+            class="bg-dirty-yellow text-faded-black px-sm py-xs font-bold border-2 border-faded-black hover:-translate-y-1 transition-transform active:translate-x-1 tool-item"
+            ><svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="10 4 4 12 10 20" />
+              <polyline points="14 4 20 12 14 20" /></svg
+            >CSS</span
+          >
+        </div>
+      </section>
+
+      <!-- Development Process -->
+      <section class="section-gap px-md max-w-container-max mx-auto">
+        <div
+          class="mb-lg flex flex-col gap-sm md:flex-row md:items-end md:justify-between"
+        >
+          <div>
+            <h2
+              class="font-heading text-heading uppercase"
+              data-lang-en="THE_PROCESS"
+              data-lang-vi="QUY_TRÌNH"
+            >
+              THE_PROCESS
+            </h2>
+          </div>
+          <p
+            class="max-w-xl text-concrete-grey"
+            data-lang-en="A clear workflow from understanding needs to building, shipping, and improving the product."
+            data-lang-vi="Một quy trình làm việc rõ ràng, từ hiểu nhu cầu, dựng hệ thống đến vận hành và cải tiến liên tục."
+          >
+            Một quy trình làm việc rõ ràng, từ hiểu nhu cầu, dựng hệ thống đến
+            vận hành và cải tiến liên tục.
+          </p>
+        </div>
+        <div class="grid gap-md lg:grid-cols-2">
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">01</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="REQUIREMENT_ANALYSIS"
+              data-lang-vi="PHÂN TÍCH YÊU CẦU"
+            >
+              PHÂN TÍCH YÊU CẦU
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Understand goals, scope, and constraints to shape the right solution."
+              data-lang-vi="Nắm bắt mục tiêu, phạm vi và ràng buộc để định hình giải pháp phù hợp."
+            >
+              Nắm bắt mục tiêu, phạm vi và ràng buộc để định hình giải pháp phù
+              hợp.
+            </p>
+          </article>
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">02</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="SYSTEM_DESIGN"
+              data-lang-vi="THIẾT KẾ HỆ THỐNG"
+            >
+              THIẾT KẾ HỆ THỐNG
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Define the structure, data flow, and experience so the system can grow smoothly."
+              data-lang-vi="Xây dựng cấu trúc, luồng dữ liệu và trải nghiệm sao cho hệ thống dễ mở rộng."
+            >
+              Xây dựng cấu trúc, luồng dữ liệu và trải nghiệm sao cho hệ thống
+              dễ mở rộng.
+            </p>
+          </article>
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">03</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="DATA_MODEL_&_API_DESIGN"
+              data-lang-vi="THIẾT KẾ DỮ LIỆU & API"
+            >
+              THIẾT KẾ DỮ LIỆU & API
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Create clear, scalable data models and APIs that stay robust through change."
+              data-lang-vi="Tạo mô hình dữ liệu và API rõ ràng, bền vững trước các thay đổi."
+            >
+              Tạo mô hình dữ liệu và API rõ ràng, bền vững trước các thay đổi.
+            </p>
+          </article>
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">04</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="DEVELOPMENT_&_TESTING"
+              data-lang-vi="PHÁT TRIỂN & KIỂM THỬ"
+            >
+              PHÁT TRIỂN & KIỂM THỬ
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Build the backend, frontend, and tests in parallel to keep quality high."
+              data-lang-vi="Triển khai backend, frontend và viết test song song để giữ chất lượng."
+            >
+              Triển khai backend, frontend và viết test song song để giữ chất
+              lượng.
+            </p>
+          </article>
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">05</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="SYSTEM_TESTING"
+              data-lang-vi="KIỂM THỬ HỆ THỐNG"
+            >
+              KIỂM THỬ HỆ THỐNG
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Verify that the product is stable and reliable before release."
+              data-lang-vi="Đảm bảo các chức năng hoạt động ổn định trước khi đưa vào vận hành."
+            >
+              Đảm bảo các chức năng hoạt động ổn định trước khi đưa vào vận
+              hành.
+            </p>
+          </article>
+          <article class="process-card p-sm sm:p-md h-full">
+            <div class="process-badge">06</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="DEPLOYMENT_&_MONITORING"
+              data-lang-vi="TRIỂN KHAI & GIÁM SÁT"
+            >
+              TRIỂN KHAI & GIÁM SÁT
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Launch the product in real conditions and monitor performance continuously."
+              data-lang-vi="Đưa sản phẩm ra môi trường thực tế và theo dõi hiệu suất liên tục."
+            >
+              Đưa sản phẩm ra môi trường thực tế và theo dõi hiệu suất liên tục.
+            </p>
+          </article>
+          <article
+            class="process-card process-card--featured p-sm sm:p-md h-full lg:col-span-2"
+          >
+            <div class="process-badge">07</div>
+            <h3
+              class="font-heading text-subheading mb-xs uppercase"
+              data-lang-en="CONTINUOUS_IMPROVEMENT"
+              data-lang-vi="CẢI TIẾN LIÊN TỤC"
+            >
+              CẢI TIẾN LIÊN TỤC
+            </h3>
+            <p
+              class="text-concrete-grey"
+              data-lang-en="Gather feedback, refine, and optimize so the system keeps evolving."
+              data-lang-vi="Thu thập phản hồi, tối ưu và điều chỉnh để hệ thống luôn tốt hơn."
+            >
+              Thu thập phản hồi, tối ưu và điều chỉnh để hệ thống luôn tốt hơn.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Journey Section -->
+      <section class="section-gap px-md max-w-4xl mx-auto" id="journey">
+        <h2 class="font-heading text-heading mb-lg uppercase text-center">
+          <span
+            class="tape-effect text-faded-black"
+            data-lang-en="JOURNEY_LOG"
+            data-lang-vi="NHẬT_KÝ_HÀNH_TRÌNH"
+            >JOURNEY_LOG</span
+          >
+        </h2>
+        <div class="space-y-md border-l-2 border-dirty-yellow pl-md">
+          <div class="relative">
+            <div
+              class="absolute -left-[22px] top-1 w-2 h-2 bg-on-background"
+            ></div>
+            <p class="font-bold text-on-background">2022 -</p>
+            <p
+              class="font-heading text-subheading"
+              data-lang-en="STARTED UNIVERSITY - IT"
+              data-lang-vi="BẮT ĐẦU ĐẠI HỌC - CNTT"
+            >
+              BẮT ĐẦU ĐẠI HỌC - CNTT
+            </p>
+            <p
+              class="text-concrete-grey mt-xs"
+              data-lang-en="Enrolled in Computer Science; began with foundational courses: Discrete Mathematics, Data Structures, and C/C++."
+              data-lang-vi="Nhập học ngành Công nghệ Thông tin. Bắt đầu hành trình với các môn cơ sở: Toán rời rạc, Cấu trúc dữ liệu, Lập trình C/C++."
+            >
+              Nhập học ngành Công nghệ Thông tin. Bắt đầu hành trình với các môn
+              cơ sở: Toán rời rạc, Cấu trúc dữ liệu, Lập trình C/C++.
+            </p>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[22px] top-1 w-2 h-2 bg-on-background"
+            ></div>
+            <p class="font-bold text-on-background">2023 -</p>
+            <p
+              class="font-heading text-subheading"
+              data-lang-en="PYTHON &amp; DATA"
+              data-lang-vi="PYTHON &amp; DỮ LIỆU"
+            >
+              PYTHON &amp; DỮ LIỆU
+            </p>
+            <p
+              class="text-concrete-grey mt-xs"
+              data-lang-en="Switched to Python; explored data analysis with Pandas and NumPy, and completed a first Machine Learning course."
+              data-lang-vi="Chuyển sang Python và yêu sự đơn giản của nó. Bắt đầu học phân tích dữ liệu với Pandas, NumPy. Tham gia khóa học Machine Learning đầu tiên."
+            >
+              Chuyển sang Python và yêu sự đơn giản của nó. Bắt đầu học phân
+              tích dữ liệu với Pandas, NumPy. Tham gia khóa học Machine Learning
+              đầu tiên.
+            </p>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[22px] top-1 w-2 h-2 bg-on-background"
+            ></div>
+            <p class="font-bold text-on-background">2024 -</p>
+            <p
+              class="font-heading text-subheading"
+              data-lang-en="BACKEND DEVELOPMENT &amp; DEEP LEARNING"
+              data-lang-vi="PHÁT TRIỂN BACKEND &amp; DEEP LEARNING"
+            >
+              PHÁT TRIỂN BACKEND &amp; DEEP LEARNING
+            </p>
+            <p
+              class="text-concrete-grey mt-xs"
+              data-lang-en="Focused on backend development and familiarized with Django and FastAPI while researching deep learning."
+              data-lang-vi="Phát triển Backend và làm quen với Django, FastAPI và nghiên cứu Deep Learning."
+            >
+              Phát triển Backend và làm quen với Django, FastAPI và nghiên cứu
+              Deep Learning.
+            </p>
+          </div>
+          <div class="relative">
+            <div
+              class="absolute -left-[22px] top-1 w-2 h-2 bg-dirty-yellow"
+            ></div>
+            <p class="font-bold text-dirty-yellow">2025 - PRESENT</p>
+            <p
+              class="font-heading text-subheading"
+              data-lang-en="BUILDING SYSTEMS &amp; DEEP LEARNING MODELS"
+              data-lang-vi="XÂY DỰNG HỆ THỐNG &amp; MÔ HÌNH HỌC SÂU"
+            >
+              XÂY DỰNG HỆ THỐNG &amp; MÔ HÌNH HỌC SÂU
+            </p>
+            <p
+              class="text-concrete-grey mt-xs"
+              data-lang-en="Building applications to improve system development skills and developing deep learning models towards the goal of becoming an AI Engineer."
+              data-lang-vi="Tập trung xây dựng các ứng dụng nhằm nâng cao kỹ năng phát triển hệ thống và phát triển các mô hình học sâu để tiến tới mục tiêu trở thành AI Engineer."
+            >
+              Tập trung xây dựng các ứng dụng nhằm nâng cao kỹ năng phát triển
+              hệ thống và phát triển các mô hình học sâu để tiến tới mục tiêu
+              trở thành AI Engineer.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <footer
+        class="section-gap px-md py-lg border-t-2 border-dashed border-on-background"
+        id="contact"
+      >
+        <div
+          class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md"
+        >
+          <div>
+            <h2 class="font-heading text-heading text-dirty-yellow uppercase">
+              BÙI VIỆT QUỐC
+            </h2>
+            <p class="text-caption text-concrete-grey">
+              ©2026 //
+            </p>
+          </div>
+          <div class="flex flex-col items-end gap-sm">
+            <p
+              class="font-heading text-subheading uppercase"
+              data-lang-en="[ REACH_OUT ]"
+              data-lang-vi="[ LIÊN_HỆ ]"
+            >
+              [ REACH_OUT ]
+            </p>
+            <div class="flex gap-md">
+              <a
+                class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black transition-all"
+                href="https://github.com/anhhit1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GITHUB
+              </a>
+              <div class="email-action">
+                <a
+                  id="emailButton"
+                  class="w-fit px-md py-xs border-2 border-on-background font-bold hover:bg-dirty-yellow hover:text-faded-black transition-all"
+                  href="mailto:buiquoc2k4@gmail.com"
+                >
+                  EMAIL
+                </a>
+                <span class="email-reveal" id="emailReveal" aria-hidden="true"
+                  >buiquoc2k4@gmail.com</span
+                >
+              </div>
+              <a
+                class="w-fit px-md py-xs bg-faded-black text-off-white font-bold border-2 border-off-white hover:bg-dirty-yellow hover:text-faded-black transition-all"
+                href="https://www.linkedin.com/in/quoc-bui-3680413a3/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LINKEDIN
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script>
+      // Language Toggle Logic (default: Vietnamese)
+      const langToggle = document.getElementById("langToggle");
+      let currentLang = "vi";
+
+      langToggle.addEventListener("click", () => {
+        currentLang = currentLang === "en" ? "vi" : "en";
+        document.querySelectorAll("[data-lang-en]").forEach((el) => {
+          const content = el.getAttribute(`data-lang-${currentLang}`) || "";
+          if (content.includes("<")) {
+            el.innerHTML = content;
+          } else {
+            el.textContent = content;
+          }
+        });
+        langToggle.innerText =
+          currentLang === "en" ? "[ EN / VI ]" : "[ VI / EN ]";
+      });
+
+      // Apply initial language (Vietnamese)
+      document.querySelectorAll("[data-lang-en]").forEach((el) => {
+        const content = el.getAttribute(`data-lang-${currentLang}`) || "";
+        if (content.includes("<")) {
+          el.innerHTML = content;
+        } else {
+          el.textContent = content;
+        }
+      });
+      langToggle.innerText =
+        currentLang === "en" ? "[ EN / VI ]" : "[ VI / EN ]";
+
+      const emailButton = document.getElementById("emailButton");
+      const emailReveal = document.getElementById("emailReveal");
+
+      const showEmail = () => emailReveal.classList.add("is-visible");
+      const hideEmail = () => emailReveal.classList.remove("is-visible");
+
+      if (emailButton && emailReveal) {
+        emailButton.addEventListener("mouseenter", showEmail);
+        emailButton.addEventListener("focus", showEmail);
+        emailButton.addEventListener("click", (event) => {
+          event.stopPropagation();
+          emailReveal.classList.toggle("is-visible");
+        });
+        emailButton.addEventListener("mouseleave", () => {
+          if (!emailReveal.classList.contains("is-visible")) return;
+          hideEmail();
+        });
+        emailButton.addEventListener("blur", hideEmail);
+      }
+
+      // Enhanced Hover for Xerox Cards
+      document.querySelectorAll(".group").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const container = card.querySelector(".brutalist-shadow-hover");
+          if (!container) return;
+
+          const rect = container.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 25;
+          const rotateY = (centerX - x) / 25;
+
+          container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          const container = card.querySelector(".brutalist-shadow-hover");
+          if (container)
+            container.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+      });
+    </script>
+  </body>
+</html>
